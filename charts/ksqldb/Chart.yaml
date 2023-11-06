@@ -1,0 +1,9 @@
+apiVersion: v2
+name: ksqldb
+description: A Helm chart for deploy ksqlDB in Kubernetes
+
+type: application
+
+version: 0.0.1
+
+appVersion: "0.29.0"
