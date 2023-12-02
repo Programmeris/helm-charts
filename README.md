@@ -1,3 +1,3 @@
 # helm-charts
 
-A set of helm charts for deploy different services
+Helm Charts stuff
