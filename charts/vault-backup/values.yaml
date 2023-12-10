@@ -1,11 +1,75 @@
-# Default values for vault-backup.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+## Global Docker image parameters
+## Please, note that this will override the image parameters, including dependencies, configured to use the global value
+## Current available global Docker image parameters: imageRegistry
+##
+# global:
+#   imageRegistry: myRegistryName
 
-replicaCount: 1
+## String to partially override common.names.fullname template (will maintain the release name)
+##
+# nameOverride:
+
+## String to fully override common.names.fullname template
+##
+# fullnameOverride:
+
+## Annotations for all the deployed objects
+##
+# commonAnnotations: {}
+
+## Labels for all the deployed objects
+##
+# commonLabels: {}
+
+# CronJob schedule
+schedule: "*/5 * * * *"
+
+# Starting deadline for missed jobs
+startingDeadlineSeconds: 600
+
+# CronJob control
+concurrencyPolicy: "Forbid"
+successfulJobsHistoryLimit: 3
+failedJobsHistoryLimit: 3
+restartPolicy: "OnFailure"
 
 image:
+  registry: docker-registry
   repository: vault-backup
+  ## tag: ""
   pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+
+## Vault parameters
+vault:
+  url: https://vault-0.vault-infra:8200
+  skipVerify: true
+  secretPath: vault-secret
+  token: token
+
+## S3 parameters
+s3:
+  url: http://localhost:9000
+  accesskey: accesskey
+  secretkey: secretkey
+  retention: 30d
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: 
+  limits:
+    cpu: 300m
+    memory: 300Mi
+  requests:
+    cpu: 100m
+    memory: 100Mi
