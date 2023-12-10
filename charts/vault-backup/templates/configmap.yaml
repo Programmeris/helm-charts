@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: vault-backup-config
+  labels:
+    app: vault-backup
+data:
+  VAULT_ADDR: {{ toString .Values.vault.url }}
+  S3_URL: {{ toString .Values.s3.url }}
+  RETENTION: {{ toString .Values.s3.retention }}
