@@ -1,7 +1,5 @@
 # helm-charts
 
-Helm Charts stuff
-
 Helm charts list:
 
 * ksqldb
