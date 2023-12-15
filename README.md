@@ -5,5 +5,6 @@ Helm charts list:
 * ksqldb
 * pg-backup
 * vault-backup
+* clickhouse-backup
 
 
